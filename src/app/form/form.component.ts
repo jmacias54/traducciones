@@ -24,6 +24,11 @@ export class FormComponent implements OnInit {
     this.listDeportes = await this.api.post(API.END_POINTS.deportes, {}).toPromise();
     this.listEventos = await this.api.post(API.END_POINTS.CEventoFindAll, {}).toPromise();
     this.deporteSelected = this.listDeportes[0].fiIdWidget;
+
+      /*validacion para remover los items con fiIdWidget = 0 */
+      this.listDeportes = this.listDeportes.filter(item => item.fiIdWidget != 0 )
+
+
     this.changeDeporte();
   }
 
